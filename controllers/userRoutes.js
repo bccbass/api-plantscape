@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 import { authenticated } from './userFunctions.js'
 import { UserModel } from '../models/UserModel.js'
 
@@ -29,7 +30,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
         // Attempt to locate user in the database
-        const storedUser = await UserModel.find(email = req.body.email)
+        const storedUser = await UserModel.findOne({email: req.body.email})
         // If not found return error message
         if (!storedUser) { 
                 res.send({error: 'Invalid username or password'})
