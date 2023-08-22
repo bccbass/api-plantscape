@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-// Remember imports
 
 const plantSchema = new Schema({
   name: {
@@ -16,4 +15,4 @@ const plantSchema = new Schema({
 
 const PlantModel = mongoose.model('Plant', plantSchema)
 
-export default PlantModel
+export { plantSchema, PlantModel }

@@ -1,12 +1,13 @@
 import mongoose from 'mongoose'
-// Remember imports
+import spaceSchema from './space.js'
+import areaSchema from './area.js'
+import plantSchema from './plant.js'
 
 const userSchema = new mongoose.Schema({
   name: {
     first: String,
     last: String
   },
-  username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   spaces: [spaceSchema [areaSchema]],
