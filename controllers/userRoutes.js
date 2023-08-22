@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import bcrypt from 'bcrypt'
 import { authenticated } from './userFunctions.js'
 import { UserModel } from '../models/UserModel.js'
 
@@ -20,7 +21,7 @@ router.post('/register', async (req, res) => {
             }
             // create new Mongoose user document
             const newUser = await UserModel.create(user)
-            res.json(201, newUser)
+            res.status(201).json(newUser)
             }
         catch (err) { res.status(500).send({err: err.message})}
     }
