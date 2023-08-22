@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-// Need to import space, area and plant schemas
+// Remember imports
 
 const userSchema = new mongoose.Schema({
   name: {
