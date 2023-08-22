@@ -1,6 +1,8 @@
-import {UserModel} from './models/UserModel.js'
-import {SpaceModel} from './models/SpaceModel.js'
-import {AreaModel} from './models/AreaModel.js'
+import { UserModel } from './models/UserModel.js'
+import { SpaceModel } from './models/SpaceModel.js'
+import { AreaModel } from './models/AreaModel.js'
+import { PlantModel } from './models/PlantModel.js'
+import { dbClose } from './db.js'
 
 const usersSeed = [
   {

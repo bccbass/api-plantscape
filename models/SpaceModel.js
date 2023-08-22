@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import {areaSchema} from './AreaModel.js'
 
 const spaceSchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
   isOutdoor: Boolean,
   isIndoor: Boolean,
   notes: String,

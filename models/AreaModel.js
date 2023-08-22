@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import {plantSchema} from './PlantModel.js'
 
 const areaSchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
   notes: String,
   plants: [plantSchema]
 })
