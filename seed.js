@@ -1,6 +1,8 @@
 import UserModel from './models/user.js'
+import SpaceModel from './models/space.js'
+import AreaModel from './models/area.js'
 
-const userSeed = [
+const usersSeed = [
   {
     name: {
       first: "Ben",
@@ -29,5 +31,81 @@ const userSeed = [
 
 await UserModel.deleteMany()
 console.log("Deleted users")
-const users = await UserModel.insertMany(userSeed)
+const users = await UserModel.insertMany(usersSeed)
 console.log("Inserted users")
+
+const spacesSeed = [
+  {
+    name: "Front Yard",
+    isOutdoor: true,
+    isIndoor: false,
+    notes: "The front of my house is east facing. It receives strong sunlight in the morning.",
+    imgUrl: ""
+  },
+  {
+    name: "Back Yard",
+    isOutdoor: true,
+    isIndoor: false,
+    notes: "The rear of my house is west facing. It receives strong sunlight in the afternoon.",
+    imgUrl: ""
+  },
+  {
+    name: "Indoors",
+    isOutdoor: false,
+    isIndoor: true,
+    notes: "Keep an eye out for that pesky fiddle leaf!",
+    imgUrl: ""
+  }
+]
+
+await SpaceModel.deleteMany()
+console.log("Deleted spaces")
+const spaces = await SpaceModel.insertMany(spacesSeed)
+console.log("Inserted spaces")
+
+const areasSeed = [
+  {
+    name: "Verandah",
+    notes: ""
+  },
+  {
+    name: "Letterbox Garden",
+    notes: ""
+  },
+  {
+    name: "Balcony",
+    notes: ""
+  },
+  {
+    name: "Boundary Hedge",
+    notes: ""
+  },
+  {
+    name: "Vegetable Garden",
+    notes: ""
+  }
+]
+
+await AreaModel.deleteMany()
+console.log("Deleted areas")
+const areas = await AreaModel.insertMany(areasSeed)
+console.log("Inserted areas")
+
+const plantsSeed = [
+  {
+    name: {
+      common: "European Silver Fir",
+      scientific: "Abies alba"
+    },
+    description: "Amazing garden plant that is sure to capture attention...",
+    light: "Partial shade",
+    care: "Medium"
+  }
+]
+
+await PlantModel.deleteMany()
+console.log("Deleted plants")
+const plants = await PlantModel.insertMany(plantsSeed)
+console.log("Inserted plants")
+
+dbClose()
