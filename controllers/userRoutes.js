@@ -1,7 +1,6 @@
 import { Router } from 'express'
 import { authenticated } from './userFunctions.js'
-
-// import { user } from ''
+import { UserModel } from '../models/UserModel.js'
 
 // Create a new instance of Router object:
 const router = Router()
@@ -9,12 +8,12 @@ const router = Router()
 router.post('/register', async (req, res) => {
         try {
             // Check if user already exists in the database
-            const existingUser = await User.findOne({ email: user.email })
+            const existingUser = await UserModel.findOne({ email: req.body.email })
             // Short circuit logic: If user already exists return error message
             existingUser && res.status(400).send({error: 'User already exists'})
             // If not hash the user password with 10 rounds of salt and set user object to hased pw
-            const hash = await bcrypt.hash(user.password, 10)
-            user = {
+            const hash = await bcrypt.hash(req.body.password, 10)
+            const user = {
                 name: req.body.name,
                 email: req.body.email, 
                 password : hash
@@ -63,4 +62,4 @@ router.get('/:id', authenticated, async (req, res) => {
 // ADD ROUTE TO UPDATE USER INFO?  
 // ADD ROUTE TO DELETE USER?   
 
-
+export default router

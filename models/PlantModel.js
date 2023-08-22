@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const plantSchema = new Schema({
+const plantSchema = new mongoose.Schema({
   name: {
     common: { type: String, required: true },
     scientific: String

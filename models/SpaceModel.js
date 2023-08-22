@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
-import areaSchema from './area.js'
+import {areaSchema} from './AreaModel.js'
 
-const spaceSchema = new Schema({
+const spaceSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   isOutdoor: Boolean,
   isIndoor: Boolean,

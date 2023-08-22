@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
-import spaceSchema from './space.js'
-import areaSchema from './area.js'
-import plantSchema from './plant.js'
+import {spaceSchema} from './SpaceModel.js'
+import {areaSchema} from './AreaModel.js'
+import {plantSchema} from './PlantModel.js'
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -10,10 +10,10 @@ const userSchema = new mongoose.Schema({
   },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  spaces: [spaceSchema [areaSchema]],
+  spaces: [spaceSchema],
   plants: [plantSchema]
 })
 
 const UserModel = mongoose.model('User', userSchema)
 
-export default UserModel
+export {UserModel}

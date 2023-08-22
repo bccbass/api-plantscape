@@ -11,3 +11,5 @@ function authenticated(req, res, next) {
         res.status(401).json({logout: true})
     }
 }
+
+export { authenticated }
