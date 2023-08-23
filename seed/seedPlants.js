@@ -25,6 +25,6 @@ const addAllSeeds = async (plantSeeds) => {
 await addAllSeeds(plantSeeds ) 
 console.log("Inserted plants")
 
-
+export { addPlant}
 
 dbClose()

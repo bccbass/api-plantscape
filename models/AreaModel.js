@@ -1,18 +1,12 @@
 import mongoose from 'mongoose'
-import {plantSchema} from './PlantModel.js'
+import { areaPlantSchema } from './AreaPlantModel.js'
 
 const areaSchema = new mongoose.Schema({
   name: { type: String, required: true },
   notes: String,
-  plants: [plantSchema]
+  plants: [areaPlantSchema]
 })
 
-// plants: [{
-//   type: Schema.Types.ObjectId,
-//   ref: "Plant",
-//   notes: String,
-//   imgUrl: String
-// }]
 
 const AreaModel = mongoose.model('Area', areaSchema)
 
