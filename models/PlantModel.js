@@ -1,18 +1,12 @@
 import mongoose from 'mongoose'
 
 const plantSchema = new mongoose.Schema({
-  // name: {
-  //   common: { type: String, required: true },
-  //   scientific: String
-  // },
-  // description: String,
-  // light: {
-  //   type: String,
-  //   enum: ['Shade', 'Partial shade', 'Full sun']
-  // },
-  // care: String
-  APIRef: String,
-  notes: String
+  apiId: Number,
+  species_id: Number,
+  commonName: String,
+  scientificName: String,
+  care: Array,
+  imgUrl: String
 })
 
 const PlantModel = mongoose.model('Plant', plantSchema)
