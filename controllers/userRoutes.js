@@ -2,6 +2,7 @@ import { Router } from 'express'
 import bcrypt from 'bcrypt'
 import { authenticated } from './userFunctions.js'
 import { UserModel } from '../models/UserModel.js'
+import jwt from 'jsonwebtoken'
 
 // Create a new instance of Router object:
 const router = Router()
@@ -29,17 +30,18 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
         // Attempt to locate user in the database
-        const storedUser = await UserModel.find(email = req.body.email)
+        const storedUser = await UserModel.findOne({email: req.body.email})
         // If not found return error message
         if (!storedUser) { 
                 res.send({error: 'Invalid username or password'})
             } else {
+                console.log("req body:", req.body.password, "stored user:", storedUser)
                 const isValidPassword = await bcrypt.compare(req.body.password, storedUser.password)
                 if (isValidPassword) { 
                     // STORED USER ID MAY NEED TO BE OBJECT...
                     // Create new JWT token
-                    const token = jwt.sign({id: storedUser.id}, process.env.JWT_SECRET, {expiresIn: '7 days'})
-                    res.json({id: storedUser.id, token})
+                    const token = jwt.sign({id: storedUser._id}, process.env.JWT_SECRET, {expiresIn: '7 days'})
+                    res.json({id: storedUser._id, token})
                     } else {
                         res.status(401).json({error: "Invalid username or password"})
                     }
