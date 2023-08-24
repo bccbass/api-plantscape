@@ -5,12 +5,8 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 
 dotenv.config()
-// IMPORT MODELS:
-// import { UserModel } from 'path'
-// Import Routes
 import userRoutes from './controllers/userRoutes.js'
-// import spaceRoutes from './controller/spaceRoutes.js'
-// import areaRoutes from './controller/areaRoutes.js'
+import plantRoutes from './controllers/plantRoutes.js'
 
 // Instantiate express instance
 const app = express()
@@ -29,8 +25,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', userRoutes)
-// app.use('/spaces', spaceRoutes)
-// app.use('/areas', areaRoutes)
+app.use('/plants', plantRoutes)
+
 
 
 
