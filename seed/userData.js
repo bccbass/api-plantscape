@@ -1,10 +1,10 @@
 import { PlantModel } from "../models/PlantModel.js"
+import bcrypt from 'bcrypt'
 
 
 const plants = await PlantModel.find()
 
 const plantObjIds = plants.map(el => el._id)
-
 
 
 const fiveRandomPlants = (plants) => {
@@ -30,7 +30,7 @@ const userData = [
         last: "Campbell"
       },
       email: "ben@gmail.com",
-      password: "ben123",
+      password: await bcrypt.hash('ben123', 10),
       spaces: [  {
           name: "Front Yard",
           isOutdoor: true,
@@ -89,7 +89,7 @@ const userData = [
         last: "Fung"
       },
       email: "kal@gmail.com",
-      password: "kal123",
+      password: await bcrypt.hash('kal123', 10),
       spaces: [  {
         name: "Front Yard",
         isOutdoor: true,
@@ -149,7 +149,7 @@ const userData = [
         last: "Davis"
       },
       email: "josh@gmail.com",
-      password: "josh123",
+      password: await bcrypt.hash('josh123', 10),
       spaces: [  {
         name: "Front Yard",
         isOutdoor: true,
