@@ -82,8 +82,8 @@ const userData = [
     
   },
     {
-      first: "Kal",
-      last: "Fung",
+      firstName: "Kal",
+      lastName: "Fung",
       email: "kal@gmail.com",
       password: await bcrypt.hash('kal123', 10),
       spaces: [  {
