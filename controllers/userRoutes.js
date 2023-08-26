@@ -16,7 +16,8 @@ router.post('/register', async (req, res) => {
             // If not hash the user password with 10 rounds of salt and set user object to hased pw
             const hash = await bcrypt.hash(req.body.password, 10)
             const user = {
-                name: req.body.name,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 email: req.body.email, 
                 password : hash
             }
