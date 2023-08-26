@@ -12,18 +12,18 @@ router.post('/register', async (req, res) => {
             // Check if user already exists in the database
             const existingUser = await UserModel.findOne({ email: req.body.email })
             // Short circuit logic: If user already exists return error message
-            existingUser && res.status(400).send({error: 'User already exists'})
+            if (existingUser) { res.status(400).send({error: 'User already exists'})}
             // If not hash the user password with 10 rounds of salt and set user object to hased pw
-            const hash = await bcrypt.hash(req.body.password, 10)
+            else {const hash = await bcrypt.hash(req.body.password, 10)
             const user = {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email, 
-                password : hash
-            }
+                password : hash}
+            
             // create new Mongoose user document
             const newUser = await UserModel.create(user)
-            res.status(201).json(newUser)
+             res.status(201).json(newUser)}
             }
         catch (err) { res.status(500).send({err: err.message})}
     }
