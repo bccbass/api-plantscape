@@ -35,13 +35,14 @@ router.post('/login', async (req, res) => {
         if (!storedUser) { 
                 res.send({error: 'Invalid username or password'})
             } else {
-                console.log("req body:", req.body.password, "stored user:", storedUser)
+                // console.log("req body:", req.body.password, "stored user:", storedUser)
                 const isValidPassword = await bcrypt.compare(req.body.password, storedUser.password)
                 if (isValidPassword) { 
                     // STORED USER ID MAY NEED TO BE OBJECT...
                     // Create new JWT token
                     const token = jwt.sign({id: storedUser._id}, process.env.JWT_SECRET, {expiresIn: '7 days'})
-                    res.json({id: storedUser._id, token})
+                    const id = storedUser._id
+                     res.json({id, token})
                     } else {
                         res.status(401).json({error: "Invalid username or password"})
                     }

@@ -25,12 +25,10 @@ return Array.from(new Array(5), (el) => {
 
 const userData = [
     {
-      name: {
-        first: "Ben",
-        last: "Campbell"
-      },
-      email: "ben@gmail.com",
-      password: await bcrypt.hash('ben123', 10),
+      firstName: "Ben",
+      lastName: "Campbell",
+      email: "b@b.com",
+      password: await bcrypt.hash('b', 10),
       spaces: [  {
           name: "Front Yard",
           isOutdoor: true,
@@ -84,10 +82,8 @@ const userData = [
     
   },
     {
-      name: {
-        first: "Kal",
-        last: "Fung"
-      },
+      first: "Kal",
+      last: "Fung",
       email: "kal@gmail.com",
       password: await bcrypt.hash('kal123', 10),
       spaces: [  {
@@ -144,10 +140,8 @@ const userData = [
     
   },
     {
-      name: {
-        first: "Josh",
-        last: "Davis"
-      },
+      firstName: "Josh",
+      lastName: "Davis",
       email: "josh@gmail.com",
       password: await bcrypt.hash('josh123', 10),
       spaces: [  {
