@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
 )
 
 
-
+// READ SINGLE USER
 router.get('/:id', authenticated, async (req, res) => {
     try {
         const id = req.params.id
@@ -65,21 +65,20 @@ router.get('/:id', authenticated, async (req, res) => {
     }
 )
 
+// UPDATE USER ROUTE
 router.put('/:id', authenticated, async (req, res) => {
     try {
         const id = req.params.id
         const updatedUserInfo = req.body
         if (updatedUserInfo) {
             const updatedUser = await UserModel.findByIdAndUpdate(id, updatedUserInfo, {new: true})
-            res.status(204).json(updatedUser)
-            res.send(updatedUser)
+            return res.status(200).json(updatedUser)
         }
-        else {res.status(400).json({error: "No update data provided"})}
-    } catch (err) { res.status(500).send({error: err.message})}
+        else {res.json({error: "No update data provided"})}
+    } catch (err) { res.send({error: err.message})}
 }
 )
 // ADD ROUTE FOR PASSWORD RESET/UPDATE
-// ADD ROUTE TO UPDATE USER INFO?  
 
 router.delete("/:id", async (req, res) => {
     try {
