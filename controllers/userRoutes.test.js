@@ -89,6 +89,52 @@ describe("DELETE /users/:id", () => {
   })
 })
 
+// PUT /USERS/:ID TEST SUITE
+
+describe("PUT /users/:id", () => {
+  let res
+  let login
+  let update
+  let token
+
+  beforeAll(async () => {
+    res = await request(app).post("/users/register").send({
+      firstName: "Donald",
+      lastName: "Trump",
+      email: "donald@gmail.com",
+      password: "president"
+    })
+  })
+
+  beforeAll(async () => {
+    login = await request(app).post("/users/login").send({
+      email: "donald@gmail.com",
+      password: "president"
+    })
+    token = login._body.token
+  })
+
+  beforeAll(async () => {
+    update = await request(app).put(`/users/${res._body._id}`).send({
+      firstName: "Don"
+    })
+    .set('Authorization', `Bearer ${token}`)
+    console.log(update)
+  })
+
+  afterAll(async () => {
+    await request(app).delete(`/users/${res._body._id}`)
+  })
+
+  test("Registered user data can be updated", () => {
+    expect(update.status).toBe(200)
+  })
+
+  test("User data is updated as intended", () => {
+    expect(update._body.firstName).toBe("Don")
+  })
+})
+
 // POST /USERS/LOGIN TEST SUITE
 
 describe("POST /users/login", () => {
