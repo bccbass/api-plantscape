@@ -1,6 +1,8 @@
 import app from "../app.js"
 import request from "supertest"
 
+// GET /USERS TEST SUITE
+
 describe("GET /users", () => {
   let res
 
@@ -25,6 +27,8 @@ describe("GET /users", () => {
     })
   })
 })
+
+// POST /USERS/REGISTER TEST SUITE
 
 describe("POST /users/register", () => {
   let res
