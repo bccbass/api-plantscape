@@ -4,7 +4,7 @@ import request from "supertest"
 // Test suite
 describe("App Test", () => {
   test("GET /", async () => {
-    // Simulate a GET request to the app's "/" path and return intercepted response object
+    // Simulate a get request to the app's "/" path and return intercepted response object
     const res = await request(app).get("/")
     // Tests
     expect(res.status).toBe(200)

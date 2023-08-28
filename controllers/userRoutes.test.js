@@ -28,6 +28,37 @@ describe("GET /users", () => {
   })
 })
 
+// GET /USERS/:ID TEST SUITE
+
+describe("GET /users/:id", () => {
+  let login
+  let token
+  let user
+
+  beforeAll(async () => {
+    login = await request(app).post("/users/login").send({
+      email: "josh@gmail.com",
+      password: "josh123"
+    })
+    token = login._body.token
+  })
+
+  beforeAll(async () => {
+    user = await request(app).get(`/users/${login._body.id}`).set('Authorization', `Bearer ${token}`)
+    console.log(user)
+  })
+
+  test("Returns JSON", () => {
+    expect(user.status).toBe(200)
+    expect(user.header["content-type"]).toMatch("json")
+  })
+
+  test("User has a valid 'firstName' and '_id'", () => {
+    expect(user._body._id).toBeDefined()
+    expect(user._body.firstName).toBeDefined()
+  })
+})
+
 // POST /USERS/LOGIN TEST SUITE
 
 describe("POST /users/login", () => {
