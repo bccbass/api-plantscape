@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">43.47% </span>
+                <span class="strong">60.86% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/46</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>3/12</span>
+                <span class='fraction'>28/46</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>3/6</span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>6/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.9% </span>
+                <span class="strong">66.66% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>4/6</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">59.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/44</span>
+                <span class='fraction'>26/44</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -194,19 +194,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -288,22 +288,22 @@ router.post('/register', async (req, res) =&gt; {
     }
 )
 &nbsp;
-router.post('/login', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+router.post('/login', async (req, res) =&gt; {
         // Attempt to locate user in the database
-        const storedUser = <span class="cstat-no" title="statement not covered" >await UserModel.findOne({email: req.body.email})</span>
+        const storedUser = await UserModel.findOne({email: req.body.email})
         // If not found return error message
-<span class="cstat-no" title="statement not covered" >        if (!storedUser) { </span>
-<span class="cstat-no" title="statement not covered" >                res.send({error: 'Invalid username or password'})</span>
+        if (!storedUser) { 
+                res.send({error: 'Invalid username or password'})
             } else {
                 // console.log("req body:", req.body.password, "stored user:", storedUser)
-                const isValidPassword = <span class="cstat-no" title="statement not covered" >await bcrypt.compare(req.body.password, storedUser.password)</span>
-<span class="cstat-no" title="statement not covered" >                if (isValidPassword) { </span>
+                const isValidPassword = await bcrypt.compare(req.body.password, storedUser.password)
+                if (isValidPassword) { 
                     // STORED USER ID MAY NEED TO BE OBJECT...
                     // Create new JWT token
-                    const token = <span class="cstat-no" title="statement not covered" >jwt.sign({id: storedUser._id}, process.env.JWT_SECRET, {expiresIn: '7 days'})</span>
-                    const id = <span class="cstat-no" title="statement not covered" >storedUser._id</span>
-<span class="cstat-no" title="statement not covered" >                     res.status(200).json({id, token})</span>
-                    } else {
+                    const token = jwt.sign({id: storedUser._id}, process.env.JWT_SECRET, {expiresIn: '7 days'})
+                    const id = storedUser._id
+                     res.status(200).json({id, token})
+                    } else <span class="missing-if-branch" title="else path not taken" >E</span>{
 <span class="cstat-no" title="statement not covered" >                        res.status(401).json({error: "Invalid username or password"})</span>
                     }
             }
@@ -358,7 +358,7 @@ export default router</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-28T12:02:09.024Z
+                at 2023-08-28T12:28:39.480Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

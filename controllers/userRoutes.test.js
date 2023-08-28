@@ -28,6 +28,37 @@ describe("GET /users", () => {
   })
 })
 
+// POST /USERS/LOGIN TEST SUITE
+
+describe("POST /users/login", () => {
+  let res
+
+  beforeAll(async () => {
+    res = await request(app).post("/users/login").send({
+      email: "josh@gmail.com",
+      password: "josh123"
+    })
+  })
+
+  test("Registered user is able to login successfully", () => {
+    expect(res.status).toBe(200)
+    expect(res.header["content-type"]).toMatch("json")
+  })
+
+  test("Invalid credentials return an error", async () => {
+    const attempt = await request(app).post("/users/login").send({
+      email: "invalid@gmail.com",
+      password: "unregistered"
+    })
+    expect(attempt.status).toBe(200)
+    expect(attempt.text).toContain("error")
+  })
+
+  test("Successful login returns JWT token", async () => {
+    expect(res.text).toContain("token")
+  })
+})
+
 // POST /USERS/REGISTER TEST SUITE
 
 describe("POST /users/register", () => {
@@ -70,7 +101,6 @@ describe("POST /users/register", () => {
       email: "josh@gmail.com",
       password: "josh123"
     })
-    console.log(user)
     expect(user.status).toBe(400)
     expect(user.text).toContain("error")
   })
