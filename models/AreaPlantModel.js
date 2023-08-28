@@ -1,11 +1,7 @@
 import mongoose from 'mongoose'
 
 const areaPlantSchema = {
-        plant: {
-            type: mongoose.ObjectId,
-            ref: 'Plant',
-            unique: false
-       },
+       plantId: Number,
        userImg: String,
        notes: String
 }
