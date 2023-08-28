@@ -7,6 +7,14 @@ dotenv.config();
 // Create a new instance of Router object:
 const router = Router();
 
+const getPlantData = async (plantId ) => {
+    const data =await fetch(
+        `https://perenual.com/api/species/details/${plantId}?key=${process.env.PERENUAL_KEY}`
+      )
+        const results = await data.json()
+          return results
+        }
+
 router.get("/", async (req, res) => {
   const query = req.query.q;
   const plantIds = req.body;
@@ -18,17 +26,12 @@ router.get("/", async (req, res) => {
         .then((data) => data.json())
         .then((results) => res.status(200).json(results.data));
     } else if (plantIds.length) {
+        const plantPromiseList = []
       plantIds.map(async (plantId) => {
-        await fetch(
-          `https://perenual.com/api/species/details/${plantId}?key=${process.env.PERENUAL_KEY}`
-        )
-          .then((data) => data.json())
-          .then((results) => {
-            console.log(results);
-            res.status(200).json(results.data);
+            plantPromiseList.push(getPlantData(plantId))
           })
-      });
-    } else (res.status(200).json({Error: "No queries supplied"}))
+          Promise.all(plantPromiseList).then(plantList => res.status(200).json(plantList))
+      } else (res.status(200).json({Error: "No queries supplied"}))
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
