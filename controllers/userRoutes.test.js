@@ -36,7 +36,6 @@ describe("POST /users/register", () => {
       email: "ejohn@gmail.com",
       password: "rocketman"
     })
-    console.log(res)
   })
 
   test("Returns a JSON body with _id", () => {
@@ -55,9 +54,21 @@ describe("POST /users/register", () => {
     expect(res.body.lastName).toBe("John")
   })
 
-  test("email has the correct value", () => {
+  test("Email has the correct value", () => {
     expect(res.body.email).toBeDefined()
     expect(res.body.email).toBe("ejohn@gmail.com")
+  })
+
+  test("A user cannot be added if already registered", async () => {
+    const user = await request(app).post("/users/register").send({
+      firstName: "Josh",
+      lastName: "Davis",
+      email: "josh@gmail.com",
+      password: "josh123"
+    })
+    console.log(user)
+    expect(user.status).toBe(400)
+    expect(user.text).toContain("error")
   })
 
   afterAll(async () => {
