@@ -64,6 +64,7 @@ describe("GET /users/:id", () => {
 describe("DELETE /users/:id", () => {
   let res
   let del
+  let err
 
   beforeAll(async () => {
     res = await request(app).post("/users/register").send({
@@ -80,6 +81,11 @@ describe("DELETE /users/:id", () => {
 
   test("Registered user data can be deleted", () => {
     expect(del.status).toBe(200)
+  })
+
+  test("Correct user id must be supplied to delete a user record", async () => {
+    err = await request(app).delete("/users/")
+    expect(err.status).toBe(404)
   })
 })
 
