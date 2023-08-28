@@ -22,7 +22,6 @@ const fiveRandomPlants = (plants) => {
   } )
   }
 
-  console.log(fiveRandomPlants(plants)) 
 
 
 

@@ -3,7 +3,6 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 // IMPORT NEEDED MODELS
-import { PlantModel } from '../models/PlantModel.js'
 
 
 
