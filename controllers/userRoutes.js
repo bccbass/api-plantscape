@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
                     // Create new JWT token
                     const token = jwt.sign({id: storedUser._id}, process.env.JWT_SECRET, {expiresIn: '7 days'})
                     const id = storedUser._id
-                     res.json({id, token})
+                     res.status(200).json({id, token})
                     } else {
                         res.status(401).json({error: "Invalid username or password"})
                     }
@@ -53,7 +53,6 @@ router.post('/login', async (req, res) => {
 
 
 
-    // SHOULD THIS ROUTE USE :ID OR ACCESS JWT TOKEN IN LOCALSTORAGE?
 router.get('/:id', authenticated, async (req, res) => {
     try {
         const id = req.params.id
@@ -62,6 +61,19 @@ router.get('/:id', authenticated, async (req, res) => {
         }
     catch (err) { res.status(500).send({err: err})}
     }
+)
+
+router.put('/:id', authenticated, async (req, res) => {
+    try {
+        const id = req.params.id
+        const updatedUserInfo = req.body
+        if (updatedUserInfo) {
+            const updatedUser = await UserModel.findByIdAndUpdate(id, updatedUserInfo, {new: true})
+            res.status(204).json(updatedUser)
+        }
+        else {res.status(400).json({error: "No update data provided"})}
+    } catch (err) { res.status(500).send({error: err.message})}
+}
 )
 // ADD ROUTE FOR PASSWORD RESET/UPDATE
 // ADD ROUTE TO UPDATE USER INFO?  
