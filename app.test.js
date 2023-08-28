@@ -18,7 +18,7 @@ describe("App Test", () => {
     const res = await request(app).get("/users")
     expect(res.status).toBe(200)
     expect(res.header['content-type']).toMatch('application/json')
-    expect(res.body.info).toBeDefined()
+    expect(res.body).toBeDefined()
     expect(res.body.info).toBe("Plantscape Index")
   })
 })

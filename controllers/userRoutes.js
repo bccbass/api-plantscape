@@ -7,6 +7,8 @@ import jwt from 'jsonwebtoken'
 // Create a new instance of Router object:
 const router = Router()
 
+router.get("/", async (req, res) => res.send(await UserModel.find().populate()))
+
 router.post('/register', async (req, res) => {
         try {
             // Check if user already exists in the database
@@ -70,6 +72,7 @@ router.put('/:id', authenticated, async (req, res) => {
         if (updatedUserInfo) {
             const updatedUser = await UserModel.findByIdAndUpdate(id, updatedUserInfo, {new: true})
             res.status(204).json(updatedUser)
+            res.send(updatedUser)
         }
         else {res.status(400).json({error: "No update data provided"})}
     } catch (err) { res.status(500).send({error: err.message})}
@@ -77,6 +80,18 @@ router.put('/:id', authenticated, async (req, res) => {
 )
 // ADD ROUTE FOR PASSWORD RESET/UPDATE
 // ADD ROUTE TO UPDATE USER INFO?  
-// ADD ROUTE TO DELETE USER?   
+
+router.delete("/:id", async (req, res) => {
+    try {
+      const user = await UserModel.findByIdAndDelete(req.params.id)
+      if (user) {
+        res.sendStatus(200)
+      } else {
+        res.status(404).send({ error: "User not found" })
+      }
+    } catch (err) {
+      res.status(500).send({ error: err.message })
+    }
+  })
 
 export default router
