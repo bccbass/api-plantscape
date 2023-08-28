@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
 )
 
 
-
+// READ SINGLE USER
 router.get('/:id', authenticated, async (req, res) => {
     try {
         const id = req.params.id
@@ -65,6 +65,7 @@ router.get('/:id', authenticated, async (req, res) => {
     }
 )
 
+// UPDATE USER ROUTE
 router.put('/:id', authenticated, async (req, res) => {
     try {
         const id = req.params.id
@@ -78,7 +79,6 @@ router.put('/:id', authenticated, async (req, res) => {
 }
 )
 // ADD ROUTE FOR PASSWORD RESET/UPDATE
-// ADD ROUTE TO UPDATE USER INFO?  
 
 router.delete("/:id", async (req, res) => {
     try {
