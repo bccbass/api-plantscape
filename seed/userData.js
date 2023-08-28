@@ -1,25 +1,28 @@
-import { PlantModel } from "../models/PlantModel.js"
 import bcrypt from 'bcrypt'
 
 
-const plants = await PlantModel.find()
+const plants = Array.from(new Array(25), (el) => {
+  const randInt = Math.floor(Math.random() * 500)
+    return el = randInt
+  }
+)
 
-const plantObjIds = plants.map(el => el._id)
+
+
 
 
 const fiveRandomPlants = (plants) => {
-return Array.from(new Array(5), (el) => {
-  const randInt = Math.floor(Math.random() * plants.length)
-  return {
-    plant: plants[randInt],
-    userImg: 'Placeholder',
-    notes: 'Write notes here...'
+  return Array.from(new Array(5), (el) => {
+    const randInt = Math.floor(Math.random() * plants.length)
+    return {
+      plantId: plants[randInt],
+      userImg: 'Placeholder',
+      notes: 'Write notes here...'
+    }
+  } )
   }
-} )
-}
 
-// console.log(fiveRandomPlants(plants))
-
+  console.log(fiveRandomPlants(plants)) 
 
 
 
@@ -78,7 +81,7 @@ const userData = [
         }
       ],
     
-       plants: plantObjIds
+       plants: plants
     
   },
     {
@@ -135,7 +138,7 @@ const userData = [
       }
     ],
   
-     plants: plantObjIds
+     plants: plants
   
     
   },
@@ -193,7 +196,7 @@ const userData = [
       }
     ],
   
-     plants: plantObjIds
+     plants: plants
   
     
   }
