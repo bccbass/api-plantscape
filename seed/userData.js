@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 
 
-const plants = Array.from(new Array(25), (el) => {
+const plants = Array.from(new Array(3), (el) => {
   const randInt = Math.floor(Math.random() * 500)
     return el = randInt
   }
@@ -12,7 +12,7 @@ const plants = Array.from(new Array(25), (el) => {
 
 
 const fiveRandomPlants = (plants) => {
-  return Array.from(new Array(5), (el) => {
+  return Array.from(new Array(2), (el) => {
     const randInt = Math.floor(Math.random() * plants.length)
     return {
       plantId: plants[randInt],
