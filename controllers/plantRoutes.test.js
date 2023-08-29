@@ -3,6 +3,8 @@ import request from "supertest"
 
 // Run "npm test" to begin
 
+// POST /PLANTS TEST SUITE
+
 // GET /PLANTS TEST SUITE
 
 describe("GET /plants", () => {
