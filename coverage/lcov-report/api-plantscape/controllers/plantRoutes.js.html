@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.18% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/22</span>
+                <span class='fraction'>11/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">19.04% </span>
+                <span class="strong">52.38% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/21</span>
+                <span class='fraction'>11/21</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,14 +104,14 @@
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -119,16 +119,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -158,17 +158,17 @@ const getPlantData = <span class="fstat-no" title="function not covered" >as</sp
 <span class="cstat-no" title="statement not covered" >          return results</span>
         }
 &nbsp;
-router.get("/", <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-  const query = <span class="cstat-no" title="statement not covered" >req.query.q;</span>
-  const plantIds = <span class="cstat-no" title="statement not covered" >req.body;</span>
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    if (query) {</span>
-<span class="cstat-no" title="statement not covered" >      await fetch(</span>
+router.get("/", async (req, res) =&gt; {
+  const query = req.query.q;
+  const plantIds = req.body;
+  try {
+    if (query) {
+      await fetch(
         `https://perenual.com/api/species-list?page=1&amp;key=${process.env.PERENUAL_KEY}&amp;q=${query}`
       )
-        .then(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; <span class="cstat-no" title="statement not covered" >data.json())</span>
-        .then(<span class="fstat-no" title="function not covered" >(r</span>esults) =&gt; <span class="cstat-no" title="statement not covered" >res.status(200).json(results.data))</span>;
-    } else <span class="cstat-no" title="statement not covered" >if (plantIds.length) {</span>
+        .then((data) =&gt; data.json())
+        .then((results) =&gt; res.status(200).json(results.data));
+    } else <span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span>if (plantIds.length) {</span>
         const plantPromiseList = <span class="cstat-no" title="statement not covered" >[]</span>
 <span class="cstat-no" title="statement not covered" >      plantIds.map(<span class="fstat-no" title="function not covered" >as</span>ync (plantId) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            plantPromiseList.push(getPlantData(plantId))</span>
@@ -187,7 +187,7 @@ export default router;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-28T22:28:25.454Z
+                at 2023-08-29T01:20:30.771Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

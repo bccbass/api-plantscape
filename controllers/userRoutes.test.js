@@ -1,6 +1,8 @@
 import app from "../app.js"
 import request from "supertest"
 
+// Run "npm test" to begin
+
 // GET /USERS TEST SUITE
 
 describe("GET /users", () => {
@@ -17,7 +19,7 @@ describe("GET /users", () => {
 
   test("Returns an array of 3 elements", () => {
     expect(res.body).toBeInstanceOf(Array)
-    // expect(res.body).toHaveLength(3)
+    expect(res.body).toHaveLength(3)
   })
 
   test("Each user has a valid 'firstName' and '_id'", () => {
@@ -45,7 +47,6 @@ describe("GET /users/:id", () => {
 
   beforeAll(async () => {
     user = await request(app).get(`/users/${login._body.id}`).set('Authorization', `Bearer ${token}`)
-    console.log(user)
   })
 
   test("Returns JSON", () => {
@@ -119,7 +120,6 @@ describe("PUT /users/:id", () => {
       firstName: "Don"
     })
     .set('Authorization', `Bearer ${token}`)
-    console.log(update)
   })
 
   afterAll(async () => {
