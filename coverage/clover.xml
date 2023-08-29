@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1693272030779" clover="3.2.0">
-  <project timestamp="1693272030779" name="All files">
-    <metrics statements="88" coveredstatements="69" conditionals="16" coveredconditionals="9" methods="15" coveredmethods="11" elements="119" coveredelements="89" complexity="0" loc="88" ncloc="88" packages="3" files="8" classes="8"/>
+<coverage generated="1693273951762" clover="3.2.0">
+  <project timestamp="1693273951762" name="All files">
+    <metrics statements="92" coveredstatements="70" conditionals="16" coveredconditionals="10" methods="16" coveredmethods="11" elements="124" coveredelements="91" complexity="0" loc="92" ncloc="92" packages="3" files="8" classes="8"/>
     <package name="api-plantscape">
       <metrics statements="11" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="app.js" path="/Users/joshuadavis/Desktop/api-plantscape/app.js">
@@ -20,37 +20,41 @@
       </file>
     </package>
     <package name="api-plantscape.controllers">
-      <metrics statements="69" coveredstatements="51" conditionals="16" coveredconditionals="9" methods="13" coveredmethods="10"/>
+      <metrics statements="73" coveredstatements="52" conditionals="16" coveredconditionals="10" methods="14" coveredmethods="10"/>
       <file name="plantRoutes.js" path="/Users/joshuadavis/Desktop/api-plantscape/controllers/plantRoutes.js">
-        <metrics statements="21" coveredstatements="11" conditionals="4" coveredconditionals="1" methods="6" coveredmethods="3"/>
+        <metrics statements="25" coveredstatements="12" conditionals="4" coveredconditionals="2" methods="7" coveredmethods="3"/>
         <line num="3" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="10" count="3" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
-        <line num="22" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="23" count="4" type="stmt"/>
-        <line num="26" count="4" type="stmt"/>
-        <line num="27" count="4" type="stmt"/>
-        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="29" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
       </file>
       <file name="userFunctions.js" path="/Users/joshuadavis/Desktop/api-plantscape/controllers/userFunctions.js">
         <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
       </file>
       <file name="userRoutes.js" path="/Users/joshuadavis/Desktop/api-plantscape/controllers/userRoutes.js">
@@ -67,14 +71,14 @@
         <line num="28" count="3" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="34" count="3" type="stmt"/>
-        <line num="36" count="4" type="stmt"/>
-        <line num="38" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="5" type="stmt"/>
+        <line num="38" count="5" type="cond" truecount="2" falsecount="0"/>
         <line num="39" count="1" type="stmt"/>
-        <line num="42" count="3" type="stmt"/>
-        <line num="43" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="46" count="3" type="stmt"/>
-        <line num="47" count="3" type="stmt"/>
-        <line num="48" count="3" type="stmt"/>
+        <line num="42" count="4" type="stmt"/>
+        <line num="43" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="4" type="stmt"/>
+        <line num="47" count="4" type="stmt"/>
+        <line num="48" count="4" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
         <line num="58" count="3" type="stmt"/>
         <line num="59" count="1" type="stmt"/>
