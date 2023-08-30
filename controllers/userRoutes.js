@@ -10,22 +10,6 @@ const router = Router()
 
 router.get("/", async (req, res) => res.send(await UserModel.find().populate()))
 
-// router.post("/newspace", async (req, res) => {
-//     try {
-//         const existingSpace = await SpaceModel.findOne({ name: req.body.name})
-//         if (existingSpace) { res.status(400).send({error: 'Space already exists'}) }
-//         else {
-//             const space = {
-//                 name: req.body.name,
-//                 notes: req.body.notes,
-//                 location: req.body.location
-//             }
-//             const newSpace = await SpaceModel.create(space)
-//             res.status(201).json(newSpace)}
-//     }
-//     catch (err) { res.status(500).send({err: err.message})}
-// })
-
 router.post('/register', async (req, res) => {
         try {
             // Check if user already exists in the database
