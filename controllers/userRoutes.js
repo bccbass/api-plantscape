@@ -2,12 +2,30 @@ import { Router } from 'express'
 import bcrypt from 'bcrypt'
 import { authenticated } from './userFunctions.js'
 import { UserModel } from '../models/UserModel.js'
+import { SpaceModel } from '../models/SpaceModel.js'
 import jwt from 'jsonwebtoken'
 
 // Create a new instance of Router object:
 const router = Router()
 
 router.get("/", async (req, res) => res.send(await UserModel.find().populate()))
+
+router.post("/newspace", async (req, res) => {
+    try {
+        const existingSpace = await SpaceModel.findOne({ name: req.body.name})
+        if (existingSpace) { res.status(400).send({error: 'Space already exists'}) }
+        else {
+            const space = {
+                name: req.body.name,
+                notes: req.body.notes,
+                isIndoor: req.body.isIndoor,
+                isOutdoor: req.body.isOutdoor
+            }
+            const newSpace = await SpaceModel.create(space)
+            res.status(201).json(newSpace)}
+    }
+    catch (err) { res.status(500).send({err: err.message})}
+})
 
 router.post('/register', async (req, res) => {
         try {
