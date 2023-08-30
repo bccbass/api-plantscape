@@ -3,8 +3,7 @@ import {areaSchema} from './AreaModel.js'
 
 const spaceSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  isOutdoor: Boolean,
-  isIndoor: Boolean,
+  location: { type: String },
   notes: String,
   areas: [areaSchema],
   imgUrl: String
