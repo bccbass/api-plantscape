@@ -13,20 +13,22 @@ const getPlantData = async (plantId) => {
   console.log('apiURL:', apiURL)
     const data = await fetch(apiURL)
     const results = await data.json()
+    console.log('results from getPlantData:', results, 'plantId:', plantId)
     return results;
 };
 
 // POST ROUTE TO PLANTS TO FETCH LIST OF PLANT IDS FROM USER.PLANTS
 router.post("/", authenticated, async (req, res) => {
-  console.log('edit from 3:55')
+  console.log('edit from 4:30')
 
   const plantIds = req.body
   console.log('plantIds:', plantIds, "length:", plantIds.length)
   try {
     if (plantIds.length) {
       const plantPromiseList = [];
-      plantIds.map(async (plantId) => {
-       plantPromiseList.push( getPlantData(plantId));
+      plantIds.map((plantId) => {
+       let promise = getPlantData(plantId)
+       plantPromiseList.push(promise);
       });
        Promise.all(plantPromiseList).then((plantList) =>{
         console.log('from PROMISES ALL')
