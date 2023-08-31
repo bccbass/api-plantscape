@@ -9,16 +9,12 @@ import { authenticated } from "./userFunctions.js";
 const router = Router();
 
 const getPlantData = async (plantId) => {
-  console.log("from get plant data");
-  console.log(
-    `https://perenual.com/api/species/details/${plantId}?key=${process.env.PERENUAL_KEY}`
-  );
   try {
     const data = await fetch(
       `https://perenual.com/api/species/details/${plantId}?key=${process.env.PERENUAL_KEY}`
     );
     const results = await data.json();
-    return results;
+    return await results;
   } catch (e) {
     console.error({ Error: e.message });
   }
