@@ -9,19 +9,17 @@ import { authenticated } from "./userFunctions.js";
 const router = Router();
 
 const getPlantData = async (plantId) => {
-  try {
     const data = await fetch(
       `https://perenual.com/api/species/details/${plantId}?key=${process.env.PERENUAL_KEY}`
     );
     const results = await data.json();
     return await results;
-  } catch (e) {
-    console.error({ Error: e.message });
-  }
 };
 
 // POST ROUTE TO PLANTS TO FETCH LIST OF PLANT IDS FROM USER.PLANTS
 router.post("/", authenticated, async (req, res) => {
+  console.log('edit from 322')
+
   const plantIds = req.body;
   try {
     if (plantIds.length) {
