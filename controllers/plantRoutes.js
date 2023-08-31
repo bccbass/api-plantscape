@@ -9,6 +9,8 @@ import { authenticated } from "./userFunctions.js"
 const router = Router();
 
 const getPlantData = async (plantId ) => {
+  console.log('from get plant data')
+  console.log(`https://perenual.com/api/species/details/${plantId}?key=${process.env.PERENUAL_KEY}`)
     const data =await fetch(
         `https://perenual.com/api/species/details/${plantId}?key=${process.env.PERENUAL_KEY}`
       )
