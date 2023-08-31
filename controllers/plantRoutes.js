@@ -20,7 +20,7 @@ const getPlantData = async (plantId) => {
     const results = await data.json();
     return results;
   } catch (e) {
-    res.status(400).send({ Error: e.message });
+    console.error({ Error: e.message });
   }
 };
 
@@ -31,9 +31,9 @@ router.post("/", authenticated, async (req, res) => {
     if (plantIds.length) {
       const plantPromiseList = [];
       plantIds.map(async (plantId) => {
-        plantPromiseList.push(getPlantData(plantId));
+       plantPromiseList.push( getPlantData(plantId));
       });
-      Promise.all(plantPromiseList).then((plantList) =>
+      await Promise.all(plantPromiseList).then((plantList) =>
         res.status(200).json(plantList)
       );
     } else res.status(200).json({ Error: "No queries supplied" });
