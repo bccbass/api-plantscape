@@ -28,8 +28,9 @@ router.post("/", authenticated, async (req, res) => {
       plantIds.map(async (plantId) => {
        plantPromiseList.push( getPlantData(plantId));
       });
-      await Promise.all(plantPromiseList).then((plantList) =>{
-        console.log('plantList:', plantList)
+       Promise.all(plantPromiseList).then((plantList) =>{
+        console.log('from PROMISES ALL')
+        console.log('plantList:', plantList[0].common_name)
         res.status(200).json(plantList)
         }
       );
