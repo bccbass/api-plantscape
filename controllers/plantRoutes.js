@@ -9,26 +9,29 @@ import { authenticated } from "./userFunctions.js";
 const router = Router();
 
 const getPlantData = async (plantId) => {
-    const data = await fetch(
-      `https://perenual.com/api/species/details/${plantId}?key=${process.env.PERENUAL_KEY}`
-    );
-    const results = await data.json();
+  const apiURL = `https://perenual.com/api/species/details/${plantId}?key=${process.env.PERENUAL_KEY}`
+  console.log('apiURL:', apiURL)
+    const data = await fetch(apiURL)
+    const results = await data.json()
     return results;
 };
 
 // POST ROUTE TO PLANTS TO FETCH LIST OF PLANT IDS FROM USER.PLANTS
 router.post("/", authenticated, async (req, res) => {
-  console.log('edit from 3:26')
+  console.log('edit from 3:55')
 
-  const plantIds = req.body;
+  const plantIds = req.body
+  console.log('plantIds:', plantIds, "length:", plantIds.length)
   try {
     if (plantIds.length) {
       const plantPromiseList = [];
       plantIds.map(async (plantId) => {
        plantPromiseList.push( getPlantData(plantId));
       });
-      await Promise.all(plantPromiseList).then((plantList) =>
+      await Promise.all(plantPromiseList).then((plantList) =>{
+        console.log('plantList:', plantList)
         res.status(200).json(plantList)
+        }
       );
     } else res.status(200).json({ Error: "No queries supplied" });
   } catch (e) {
