@@ -10,19 +10,19 @@ const router = Router();
 
 const getPlantData = async (plantId) => {
   const apiURL = `https://perenual.com/api/species/details/${plantId}?key=${process.env.PERENUAL_KEY}`
-  console.log('apiURL:', apiURL)
+  // console.log('apiURL:', apiURL)
     const data = await fetch(apiURL)
     const results = await data.json()
-    console.log('results from getPlantData:', results, 'plantId:', plantId)
+    // console.log('results from getPlantData:', results, 'plantId:', plantId)
     return results;
 };
 
 // POST ROUTE TO PLANTS TO FETCH LIST OF PLANT IDS FROM USER.PLANTS
 router.post("/", authenticated, async (req, res) => {
-  console.log('edit from 4:30')
+  // console.log('from plant post route')
 
   const plantIds = req.body
-  console.log('plantIds:', plantIds, "length:", plantIds.length)
+  // console.log('plantIds:', plantIds, "length:", plantIds.length)
   try {
     if (plantIds.length) {
       const plantPromiseList = [];
@@ -31,8 +31,8 @@ router.post("/", authenticated, async (req, res) => {
        plantPromiseList.push(promise);
       });
        Promise.all(plantPromiseList).then((plantList) =>{
-        console.log('from PROMISES ALL')
-        console.log('plantList:', plantList[0].common_name)
+        // console.log('from PROMISES ALL')
+        // console.log('plantList:', plantList[0].common_name)
         res.status(200).json(plantList)
         }
       );
