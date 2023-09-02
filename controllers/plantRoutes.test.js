@@ -3,8 +3,6 @@ import request from "supertest"
 
 // Run "npm test" to begin
 
-// POST /PLANTS TEST SUITE
-
 // GET /PLANTS TEST SUITE
 
 describe("GET /plants", () => {
@@ -46,7 +44,6 @@ describe("GET /plants", () => {
 
   test("String query (q) must be supplied", async () => {
     res = await request(app).get("/plants").set('Authorization', `Bearer ${token}`)
-    console.log(res)
     expect(res.status).toBe(200)
     expect(res.header["content-type"]).toMatch("json")
     expect(res.text).toContain("Error")
