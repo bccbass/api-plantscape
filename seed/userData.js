@@ -75,10 +75,10 @@ const userData = [
     plants: plants,
   },
   {
-    firstName: "Kal",
-    lastName: "Fung",
-    email: "kal@gmail.com",
-    password: await bcrypt.hash("kal123", 10),
+    firstName: "Bob",
+    lastName: "Marley",
+    email: "admin@plantscape.com",
+    password: await bcrypt.hash("admin", 10),
     spaces: [
       {
         name: "Front Yard",
